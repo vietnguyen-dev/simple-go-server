@@ -1,5 +1,5 @@
 # Use the official Go image as a base image
-FROM golang:latest AS builder
+FROM golang:1.22.2 AS builder
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -11,7 +11,7 @@ COPY . .
 RUN go build -o main .
 
 # Start with an Ubuntu Linux-based image
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -22,7 +22,7 @@ COPY --from=builder /app/main .
 # Copy the frontend directory
 COPY frontend /app/frontend
 
-# Allow the main directory to be run
+# Allow the ain directory to be run
 RUN chmod +x /app/main
 
 # Expose port 8080 to the outside world
