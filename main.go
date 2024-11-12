@@ -26,7 +26,7 @@ func main() {
 }
 
 func Messages(w http.ResponseWriter, req *http.Request) {
-	db, err := sql.Open("postgres", "postgresql://postgres:boobs@172.17.0.2/postgres?sslmode=disable")
+	db, err := sql.Open("postgres", "postgresql://postgres:boobs@172.17.0.3/postgres?sslmode=disable")
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error connecting to database: %s", err), http.StatusInternalServerError)
 		return
